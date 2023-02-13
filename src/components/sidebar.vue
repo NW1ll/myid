@@ -65,36 +65,41 @@ const items = [
     {
         icon: 'Calendar',
         index: '1',
-        title: '表格相关',
+        title: '认证基本信息',
         permiss: '2',
-        subs: [
+        subs:  [
             {
-                index: '/table',
-                title: '常用表格',
+                index: '/authentication',
+                title: '认证个人信息',
                 permiss: '2',
             },
             {
-                index: '/import',
-                title: '导入Excel',
+                index: '/editinfo',
+                title: '编辑个人信息',
                 permiss: '2',
             },
             {
-                index: '/export',
-                title: '导出Excel',
+                index: '/connect',
+                title: '管理已连接的网站',
                 permiss: '2',
             },
+            {
+              index: '/save',
+              title: '管理数据保存方式',
+              permiss: '2',
+          },
         ],
     },
     {
         icon: 'DocumentCopy',
         index: '/tabs',
-        title: 'tab选项卡',
+        title: '编辑个人属性',
         permiss: '3',
     },
     {
-        icon: 'Edit',
+        icon: 'Setting',
         index: '3',
-        title: '表单相关',
+        title: '管理已连接的网站',
         permiss: '4',
         subs: [
             {
@@ -127,33 +132,34 @@ const items = [
         ],
     },
     {
-        icon: 'Setting',
+        icon: 'Warning',
         index: '/icon',
-        title: '自定义图标',
+        title: '管理您的数据',
         permiss: '10',
     },
-    {
-        icon: 'PieChart',
-        index: '/charts',
-        title: 'schart图表',
-        permiss: '11',
-    },
-    {
-        icon: 'Warning',
-        index: '/permission',
-        title: '权限管理',
-        permiss: '13',
-    },
-    {
-        icon: 'CoffeeCup',
-        index: '/donate',
-        title: '支持作者',
-        permiss: '14',
-    },
+    // {
+    //     icon: 'PieChart',
+    //     index: '/charts',
+    //     title: 'schart图表',
+    //     permiss: '11',
+    // },
+    // {
+    //     icon: 'Warning',
+    //     index: '/permission',
+    //     title: '权限管理',
+    //     permiss: '13',
+    // },
+    // {
+    //     icon: 'CoffeeCup',
+    //     index: '/donate',
+    //     title: '支持作者',
+    //     permiss: '14',
+    // },
 ];
 
 const route = useRoute();
 const onRoutes = computed(() => {
+  console.log(onRoutes)
     return route.path;
 });
 

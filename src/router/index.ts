@@ -5,7 +5,7 @@ import Home from '../views/home.vue';
 const routes: RouteRecordRaw[] = [
     {
         path: '/',
-        redirect: '/dashboard',
+        redirect: '/login',   //  原本为'/dashboard'
     },
     {
         path: '/',
@@ -22,13 +22,13 @@ const routes: RouteRecordRaw[] = [
                 component: () => import(/* webpackChunkName: "dashboard" */ '../views/dashboard.vue'),
             },
             {
-                path: '/table',
-                name: 'basetable',
+                path: '/authentication',
+                name: 'authentication',
                 meta: {
-                    title: '表格',
+                    title: '认证个人信息',
                     permiss: '2',
                 },
-                component: () => import(/* webpackChunkName: "table" */ '../views/table.vue'),
+                component: () => import(/* webpackChunkName: "table" */ '../views/user.vue'),
             },
             {
                 path: '/charts',
@@ -120,22 +120,31 @@ const routes: RouteRecordRaw[] = [
                 component: () => import(/* webpackChunkName: "markdown" */ '../views/markdown.vue'),
             },
             {
-                path: '/export',
-                name: 'export',
+                path: '/connect',
+                name: 'connect',
                 meta: {
-                    title: '导出Excel',
+                    title: '管理已连接的网站',
                     permiss: '2',
                 },
-                component: () => import(/* webpackChunkName: "export" */ '../views/export.vue'),
+                component: () => import(/* webpackChunkName: "export" */ '../views/connect.vue'),
             },
             {
-                path: '/import',
-                name: 'import',
+                path: '/editinfo',
+                name: 'editinfo',
                 meta: {
-                    title: '导入Excel',
+                    title: '编辑个人信息',
                     permiss: '2',
                 },
-                component: () => import(/* webpackChunkName: "import" */ '../views/import.vue'),
+                component: () => import(/* webpackChunkName: "import" */ '../views/savedata.vue'),
+            },
+            {
+                path: '/save',
+                name: 'save',
+                meta: {
+                    title: '管理数据管理方式',
+                    permiss: '2',
+                },
+                component: () => import(/* webpackChunkName: "import" */ '../views/save.vue'),
             },
         ],
     },
@@ -155,6 +164,44 @@ const routes: RouteRecordRaw[] = [
         },
         component: () => import(/* webpackChunkName: "403" */ '../views/403.vue'),
     },
+    {
+        path: '/detail',
+        name: 'loginDetail',
+        meta: {
+            title: '系统首页',
+            permiss: '1',
+        },
+        component: () => import(/* webpackChunkName: "dashboard" */ '../views/loginDetail.vue'),
+    },
+    {
+        path: '/register',
+        name: 'register',
+        meta: {
+            title: '系统首页',
+            permiss: '1',
+        },
+        component: () => import(/* webpackChunkName: "table" */ '../views/register.vue'),
+        children:[
+            {
+                path: 'registerA',
+                name: 'registerA',
+                meta: {
+                    title: '系统首页',
+                    permiss: '1',
+                },
+                component: () => import(/* webpackChunkName: "table" */ '../views/registerA.vue'),
+            },
+            {
+                path: 'registerB',
+                name: 'registerB',
+                meta: {
+                    title: '系统首页',
+                    permiss: '1',
+                },
+                component: () => import(/* webpackChunkName: "table" */ '../views/registerB.vue'),
+            }
+        ]
+    },
 ];
 
 const router = createRouter({
@@ -162,18 +209,20 @@ const router = createRouter({
     routes,
 });
 
-router.beforeEach((to, from, next) => {
-    document.title = `${to.meta.title} | vue-manage-system`;
-    const role = localStorage.getItem('ms_username');
-    const permiss = usePermissStore();
-    if (!role && to.path !== '/login') {
-        next('/login');
-    } else if (to.meta.permiss && !permiss.key.includes(to.meta.permiss)) {
-        // 如果没有权限，则进入403
-        next('/403');
-    } else {
-        next();
-    }
-});
+// router.beforeEach((to, from, next) => {
+//     document.title = `${to.meta.title} | vue-manage-system`;
+//     const role = localStorage.getItem('ms_username');
+//     const permiss = usePermissStore();
+//     if(to.path ==='/detail' || to.path === '/register' || to.path === '/register/registerA' || to.path === '/register/registerB'){
+//         next()
+//     } else if (!role && to.path !== '/login') {
+//         next('/login');
+//     } else if (to.meta.permiss && !permiss.key.includes(to.meta.permiss)) {
+//         // 如果没有权限，则进入403
+//         next('/403');
+//     } else {
+//         next();
+//     }
+// });
 
 export default router;

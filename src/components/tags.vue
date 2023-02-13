@@ -41,6 +41,7 @@ const isActive = (path: string) => {
 };
 
 const tags = useTagsStore();
+console.log(tags,route)
 // 关闭单个标签
 const closeTags = (index: number) => {
 	const delItem = tags.list[index];
@@ -140,10 +141,10 @@ const handleTags = (command: string) => {
 
 .tags-li-title {
 	float: left;
-	max-width: 80px;
+	max-width: 100px;
 	overflow: hidden;
 	white-space: nowrap;
-	text-overflow: ellipsis;
+	//text-overflow: ellipsis;
 	margin-right: 5px;
 	color: #666;
 }

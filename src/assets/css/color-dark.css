@@ -1,23 +1,23 @@
 .header{
-    background-color: #242f42;
+    background-color: #54708a;
 }
 .login-wrap{
-    background: #324157;
+    background: #333f50;
 }
 .plugins-tips{
     background: #eef1f6;
 }
 .plugins-tips a{
-    color: #20a0ff;
+    color: #bb91bb;
 }
 
 .tags-li.active {
-    border: 1px solid #409EFF;
-    background-color: #409EFF;
+    border: 1px solid #8ba9c9;
+    background-color: #768eab;
 }
 .message-title{
-    color: #20a0ff;
+    color: #5f8594;
 }
 .collapse-btn:hover{
-    background: rgb(40,52,70);
+    background: rgb(109, 125, 168);
 }

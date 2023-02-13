@@ -26,7 +26,7 @@
     </div>
 </template>
 
-<script setup lang="ts" name="import">
+<script setup lang="ts" name="savedata">
 import { UploadProps } from 'element-plus';
 import { ref, reactive } from 'vue';
 import * as XLSX from 'xlsx';

@@ -1,50 +1,49 @@
 <template>
 	<div>
-		<el-row :gutter="20">
-			<el-col :span="12">
-				<el-card shadow="hover">
-					<template #header>
-						<div class="clearfix">
-							<span>基础信息</span>
-						</div>
-					</template>
-					<div class="info">
-						<div class="info-image" @click="showDialog">
-							<el-avatar :size="100" :src="avatarImg" />
-							<span class="info-edit">
-								<i class="el-icon-lx-camerafill"></i>
-							</span>
-						</div>
-						<div class="info-name">{{ name }}</div>
-						<div class="info-desc">不可能！我的代码怎么可能会有bug！</div>
-					</div>
-				</el-card>
-			</el-col>
-			<el-col :span="12">
-				<el-card shadow="hover">
-					<template #header>
-						<div class="clearfix">
-							<span>账户编辑</span>
-						</div>
-					</template>
-					<el-form label-width="90px">
-						<el-form-item label="用户名："> {{ name }} </el-form-item>
-						<el-form-item label="旧密码：">
-							<el-input type="password" v-model="form.old"></el-input>
-						</el-form-item>
-						<el-form-item label="新密码：">
-							<el-input type="password" v-model="form.new"></el-input>
-						</el-form-item>
-						<el-form-item label="个人简介：">
-							<el-input v-model="form.desc"></el-input>
-						</el-form-item>
-						<el-form-item>
-							<el-button type="primary" @click="onSubmit">保存</el-button>
-						</el-form-item>
-					</el-form>
-				</el-card>
-			</el-col>
-		</el-row>
+    <el-card shadow="hover">
+      <template #header>
+        <div class="clearfix">
+          <div class="hh">认证个人信息</div>
+        </div>
+      </template>
+      <div class="hhh">请注意：您的信息已加密我们无法获取也不会向已连接的网站泄露</div>
+      <el-form label-width="100px" style="position: relative;top: 60px;height: 820px;">
+        <el-row justify="center" align="middle">
+          <el-col :span="6">
+            <el-form-item label="用户名：">
+              <el-input class="input" type="text" v-model="form.name"></el-input>
+            </el-form-item>
+            <el-form-item label="性别： ">
+              <el-select v-model="value"  class="input" placeholder="Select" >
+                <el-option
+                    v-for="item in options"
+                    :key="item.value"
+                    :label="item.label"
+                    :value="item.value"
+                />
+              </el-select>
+            </el-form-item>
+            <el-form-item label="身份证号：">
+              <el-input class="input" type="text" v-model="form.id"></el-input>
+            </el-form-item>
+            <el-form-item label="年龄：">
+              <el-input class="input" type="text" v-model="form.old"></el-input>
+            </el-form-item>
+            <el-form-item label="手机：">
+              <el-input class="input" type="text" v-model="form.new"></el-input>
+            </el-form-item>
+            <el-form-item label="验证码：">
+              <el-input class="input" v-model="form.code"></el-input>
+            </el-form-item>
+            <el-button  style="position: relative;top: -50px;left: 450px" >获取验证码</el-button>
+            <el-form-item>
+              <el-button style="position: relative;left: 85px" size="large" type="primary" @click="onSubmit">认证</el-button>
+            </el-form-item>
+          </el-col>
+        </el-row>
+      </el-form>
+    </el-card>
+
 		<el-dialog title="裁剪图片" v-model="dialogVisible" width="600px">
 			<vue-cropper
 				ref="cropper"
@@ -76,10 +75,24 @@ import avatar from '../assets/img/img.jpg';
 
 const name = localStorage.getItem('ms_username');
 const form = reactive({
-	old: '',
-	new: '',
-	desc: '不可能！我的代码怎么可能会有bug！'
+  name:'',
+  id:'',
+	age: '',
+	mobile: '',
+	code: ''
 });
+const value = ref('')
+
+const options = [
+  {
+    value: '1',
+    label: '男',
+  },
+  {
+    value: '2',
+    label: '女',
+  },
+]
 const onSubmit = () => {};
 
 const avatarImg = ref(avatar);
@@ -171,4 +184,20 @@ const saveAvatar = () => {
 	opacity: 0;
 	cursor: pointer;
 }
+.hh{
+  margin: 0 auto;
+  width: 200px;
+  font-size: 28px;
+}
+.input{
+  width: 16rem;
+}
+.hhh{
+  margin: 0 auto;
+  width: 600px;
+  font-size: 20px;
+  color: red;
+}
+
+
 </style>

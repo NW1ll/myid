@@ -1,22 +1,24 @@
 <template>
-    <div>
-        <div class="container">
-            <div class="handle-box">
-                <el-button type="primary" @click="exportXlsx">导出Excel</el-button>
-            </div>
-            <el-table :data="tableData" border class="table" header-cell-class-name="table-header">
-                <el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
-                <el-table-column prop="name" label="姓名"></el-table-column>
-                <el-table-column prop="sno" label="学号"></el-table-column>
-                <el-table-column prop="class" label="班级"></el-table-column>
-                <el-table-column prop="age" label="年龄"></el-table-column>
-                <el-table-column prop="sex" label="性别"></el-table-column>
-            </el-table>
-        </div>
+  <el-card shadow="hover">
+    <template #header>
+      <div class="clearfix">
+        <div class="hh">管理已连接的网站</div>
+      </div>
+    </template>
+    <div class="container">
+      <el-table :data="tableData" border class="table" header-cell-class-name="table-header">
+        <el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
+        <el-table-column prop="name" label="姓名"></el-table-column>
+        <el-table-column prop="sno" label="学号"></el-table-column>
+        <el-table-column prop="class" label="班级"></el-table-column>
+        <el-table-column prop="age" label="年龄"></el-table-column>
+        <el-table-column prop="sex" label="性别"></el-table-column>
+      </el-table>
     </div>
+  </el-card>
 </template>
 
-<script setup lang="ts" name="export">
+<script setup lang="ts" name="connect">
 import { ref } from 'vue';
 import * as XLSX from 'xlsx';
 
@@ -94,5 +96,10 @@ const exportXlsx = () => {
     margin: auto;
     width: 40px;
     height: 40px;
+}
+.hh{
+  margin: 0 auto;
+  width: 250px;
+  font-size: 28px;
 }
 </style>
