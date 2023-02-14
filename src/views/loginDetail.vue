@@ -200,7 +200,7 @@ tags.clearTags();
     top: 200px;
     left: 35%;
     width: 600px;
-    border: 1px #a0a0a6 solid;
+    border: 2px #a0a0a6 solid;
     box-sizing: border-box;
     background-color: var(--bg-color, #fff);
     border-radius: 20px;

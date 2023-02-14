@@ -5,16 +5,61 @@
       <span>MyId:由您自己掌握的Web3分布式身份</span>
     </div>
 		<div class="ms-login">
-      <div class="links">
-        <div class="link">
-          <p>使用助记词登陆现有身份</p>
-          <router-link class="aa"  :to="{name:'loginDetail'}">登陆</router-link>
-        </div>
-        <div class="link">
-          <p>使用全新的助记词创建新身份</p>
-          <router-link class="aa"  to="/register">创建</router-link>
-        </div>
-      </div>
+<!--      <div class="links">-->
+<!--        <div class="link">-->
+<!--          <p>使用助记词登陆现有身份</p>-->
+<!--          <router-link class="aa"  :to="{name:'loginDetail'}">登陆</router-link>-->
+<!--        </div>-->
+<!--        <div class="link">-->
+<!--          <p>使用全新的助记词创建新身份</p>-->
+<!--          <router-link class="aa"  to="/register">创建</router-link>-->
+<!--        </div>-->
+<!--      </div>-->
+      <el-row :gutter="16" justify="center">
+        <el-col :span="12">
+          <el-card shadow="hover" style="border: 2px #dadae5 solid;;border-radius: 10px;background-color: #f6f5f5">
+            <el-container>
+              <el-main>
+                <el-row justify="center">
+                  <el-col :span="18">
+                    <el-icon style="font-size: 30px;position: relative;left: 80px"><Discount /></el-icon>
+                    <p style="font-size: 18px;color: #606266 ">使用助记词登陆现有身份。</p>
+                  </el-col>
+                </el-row>
+              </el-main>
+              <el-footer>
+                <el-row justify="center">
+                  <el-col :span="15">
+                    <el-button type="primary" round style="width: 160px;margin-top: 20px" @click="handleLogin">登陆</el-button>
+                  </el-col>
+                </el-row>
+              </el-footer>
+            </el-container>
+          </el-card>
+        </el-col>
+        <el-col :span="12">
+          <el-card shadow="hover" style="border: 2px #dadae5 solid;;border-radius: 10px;background-color: #f6f5f5">
+            <el-container>
+              <el-main>
+                <el-row justify="center">
+                  <el-col :span="20">
+                    <el-icon style="font-size: 30px;position: relative;left: 92px"><Plus /></el-icon>
+                    <p style="font-size: 18px;color: #606266 ">使用全新的助记词创建新身份。</p>
+                  </el-col>
+                </el-row>
+              </el-main>
+              <el-footer>
+                <el-row justify="center">
+                  <el-col :span="15">
+                    <el-button type="primary" round style="width: 160px;margin-top: 20px" @click="handleRegister">注册</el-button>
+                  </el-col>
+                </el-row>
+                <!--                <router-link class="aa"  :to="{name:'loginDetail'}">登陆</router-link>-->
+              </el-footer>
+            </el-container>
+          </el-card>
+        </el-col>
+      </el-row>
 		</div>
 	</div>
 </template>
@@ -67,6 +112,13 @@ const submitForm = (formEl: FormInstance | undefined) => {
 	});
 };
 
+const handleLogin = () => {
+  router.push('/detail')
+}
+const handleRegister = () => {
+  router.push('/register')
+}
+
 const tags = useTagsStore();
 tags.clearTags();
 </script>
@@ -80,29 +132,12 @@ tags.clearTags();
 	background-size: 100%;
   .ms-login {
     position: relative;
-    top: 20px;
+    top: 50px;
     margin: 0 auto;
-    width: 500px;
-    .links{
-      display: flex;
-      justify-content: space-between;
-      .link {
-        text-align: center;
-        background-color: #f0f2f5;
-        border: 1px solid #f0f2f5;
-        width: 200px;
-        height: 100px;
-        margin: 0 20px;
-        box-shadow: rgba(50, 50, 93, 0.25) 0px 30px 60px -12px inset, rgba(0, 0, 0, 0.3) 0px 18px 36px -18px inset;
-        .aa{
-          color: #2d8cf0;
-          display: block;
-        }
-        p{
-          padding: 5px 5px
-
-        }
-      }
+    width: 800px;
+    .aa{
+      color: #2d8cf0;
+      display: block;
     }
     .router-view{
       overflow: hidden;
@@ -139,7 +174,7 @@ tags.clearTags();
 .img-box {
   text-align: center;
   img {
-    padding-top: 200px;
+    padding-top: 100px;
     vertical-align: middle;
     height: 200px;
     width: 200px;

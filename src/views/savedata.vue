@@ -1,105 +1,106 @@
 <template>
-    <div>
-        <div class="container">
-            <div class="handle-box">
-                <el-upload
-                    action="#"
-                    :limit="1"
-                    accept=".xlsx, .xls"
-                    :show-file-list="false"
-                    :before-upload="beforeUpload"
-                    :http-request="handleMany"
-                >
-                    <el-button class="mr10" type="success">批量导入</el-button>
-                </el-upload>
-                <el-link href="/template.xlsx" target="_blank">下载模板</el-link>
-            </div>
-            <el-table :data="tableData" border class="table" header-cell-class-name="table-header">
-                <el-table-column prop="id" label="ID" width="55" align="center"></el-table-column>
-                <el-table-column prop="name" label="姓名"></el-table-column>
-                <el-table-column prop="sno" label="学号"></el-table-column>
-                <el-table-column prop="class" label="班级"></el-table-column>
-                <el-table-column prop="age" label="年龄"></el-table-column>
-                <el-table-column prop="sex" label="性别"></el-table-column>
-            </el-table>
-        </div>
+  <el-card shadow="hover">
+    <template #header>
+      <div class="clearfix">
+        <div class="hh">编辑个人信息</div>
+      </div>
+    </template>
+    <div class="container">
+      <vxe-switch  v-model="switchValue" close-label="打开编辑"  open-label="关闭编辑" @change="switchEvent"></vxe-switch>
+      <vxe-grid ref="xTable"  v-bind="gridOptions" >
+        <template #prop_default="{ row, column }">
+<!--          后续动态遍历-->
+          <el-link type="primary" v-if="row.prop === '邮箱'" href="/www.baidu.com">{{row.prop}}</el-link>
+          <el-link type="primary" v-if="row.prop === '爱好'" href="/www.baidu.com">爱好</el-link>
+          <el-link type="primary" v-if="row.prop === '简介'" href="/www.baidu.com">简介</el-link>
+        </template>
+        <template #content_edit="{ row, column }">
+          <vxe-input v-model="row.content" ></vxe-input>
+        </template>
+        <template #default="{ row }">
+          <vxe-button status="danger" content="删除" @click="deleteRowEvent(row)"></vxe-button>
+        </template>
+      </vxe-grid>
     </div>
+  </el-card>
 </template>
 
-<script setup lang="ts" name="savedata">
-import { UploadProps } from 'element-plus';
-import { ref, reactive } from 'vue';
-import * as XLSX from 'xlsx';
-
-interface TableItem {
-    id: number;
-    name: string;
-    sno: string;
-    class: string;
-    age: string;
-    sex: string;
-}
-
-const tableData = ref<TableItem[]>([]);
-// 获取表格数据
-const getData = () => {
-    tableData.value = [
-        {
-            id: 1,
-            name: '小明',
-            sno: 'S001',
-            class: '一班',
-            age: '10',
-            sex: '男',
+<script  lang="ts" name="savedata">
+import { ref, reactive,defineComponent } from 'vue';
+import {VxeGridInstance,  VxeGridProps, VXETable } from 'vxe-table'
+  export default defineComponent({
+    setup () {
+      const xTable =ref<VxeGridInstance>()
+      const gridOptions = reactive<VxeGridProps>({
+        border: true,
+        stripe: true,
+        showFooter: true,
+        height: 500,
+        tooltipConfig: {},
+        exportConfig: {},
+        menuConfig: {},
+        columnConfig: {
+          resizable: true
         },
-        {
-            id: 2,
-            name: '小红',
-            sno: 'S002',
-            class: '一班',
-            age: '9',
-            sex: '女',
+        toolbarConfig: {
+          export: true,
+          zoom: true
         },
-    ];
-};
-getData();
+        editConfig: {
+          trigger: 'click',
+          mode: 'row',
+          enabled:false,
+        },
+        columns: [
+          { field: 'prop', title: '个人属性', slots: { default: 'prop_default' } },
+          { field: 'createDate', title: '创建日期'  },
+          { field: 'lastDate', title: '最后修改日期' },
+          { field: 'content', title: '属性内容', editRender: {}, slots: { edit: 'content_edit' } },
+          { title: '操作',  slots: { default: 'default' },align:'center'}
+        ],
+        data: [
+          {  prop: '邮箱', createDate: 'Develop',  content: 28, lastDate: '2021-03-13' },
+          {  prop: '爱好', createDate: 'Test',  content: 22, lastDate: '2021-01-05' },
+          {  prop: '简介', createDate: 'PM',  content: 32, lastDate: '2021-04-13' },
+        ],
+      })
+      const switchValue = ref(false);
+      const deleteRowEvent = async (row: any) => {
+        const $table = xTable.value
+        const type = await VXETable.modal.confirm('您确定要删除该数据?')
+        if (type === 'confirm') {
+          await $table!.remove(row)
+        }
+      }
+      const switchEvent = (event:any) =>{
+        if(event.value){
+          gridOptions.editConfig = {
+            trigger: 'click',
+            mode: 'row',
+            enabled:true,
+          }
+        }else {
+          gridOptions.editConfig = {
+            trigger: 'click',
+            mode: 'row',
+            enabled:false,
+          }
 
-const importList = ref<any>([]);
-const beforeUpload: UploadProps['beforeUpload'] = async (rawFile) => {
-    importList.value = await analysisExcel(rawFile);
-    return true;
-};
-const analysisExcel = (file: any) => {
-    return new Promise(function (resolve, reject) {
-        const reader = new FileReader();
-        reader.onload = function (e: any) {
-            const data = e.target.result;
-            let datajson = XLSX.read(data, {
-                type: 'binary',
-            });
+        }
+      }
 
-            const sheetName = datajson.SheetNames[0];
-            const result = XLSX.utils.sheet_to_json(datajson.Sheets[sheetName]);
-            resolve(result);
-        };
-        reader.readAsBinaryString(file);
-    });
-};
+      return {
+        gridOptions,
+        switchValue,
+        deleteRowEvent,
+        switchEvent,
+        xTable
+      }
+    }
+  })
 
-const handleMany = async () => {
-    // 把数据传给服务器后获取最新列表，这里只是示例，不做请求
-    const list = importList.value.map((item: any, index: number) => {
-        return {
-            id: index,
-            name: item['姓名'],
-            sno: item['学号'],
-            class: item['班级'],
-            age: item['年龄'],
-            sex: item['性别'],
-        };
-    });
-    tableData.value.push(...list);
-};
+
+
 </script>
 
 <style scoped>
@@ -114,5 +115,10 @@ const handleMany = async () => {
 }
 .mr10 {
     margin-right: 10px;
+}
+.hh{
+  margin: 0 auto;
+  width: 250px;
+  font-size: 28px;
 }
 </style>
