@@ -7,7 +7,7 @@
         </div>
       </template>
       <div class="hhh">请注意：您的信息已加密我们无法获取也不会向已连接的网站泄露</div>
-      <el-form label-width="100px" style="position: relative;top: 60px;height: 820px;">
+      <el-form :model="form" label-width="100px" style="position: relative;top: 60px;height: 820px;">
         <el-row justify="center" align="middle">
           <el-col :span="6">
             <el-form-item label="用户名：">

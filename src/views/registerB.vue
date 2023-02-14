@@ -4,81 +4,83 @@
   </div>
   <div class="login-box">
     <p>请重新输入您的助记词</p>
-    <div class="demo-input-size">
-      <span>1.</span>
-      <el-input
-          v-model="input1"
-          class="w-50 m-2"
-      />
-      <span>2.</span>
-      <el-input v-model="input2" class="w-50 m-2" />
-      <span>3.</span>
-      <el-input
-          v-model="input3"
-          class="w-50 m-2"
+    <el-form :model="form">
+      <div class="demo-input-size">
+        <span>1.</span>
+        <el-input
+            v-model="form.input1"
+            class="w-50 m-2"
+        />
+        <span>2.</span>
+        <el-input v-model="form.input2" class="w-50 m-2" />
+        <span>3.</span>
+        <el-input
+            v-model="form.input3"
+            class="w-50 m-2"
 
-      />
-    </div>
-    <div class="demo-input-size">
-      <span>4.</span>
-      <el-input
-          v-model="input1"
-          class="w-50 m-2"
+        />
+      </div>
+      <div class="demo-input-size">
+        <span>4.</span>
+        <el-input
+            v-model="form.input4"
+            class="w-50 m-2"
 
-      />
-      <span>5.</span>
-      <el-input
-          v-model="input2"
-          class="w-50 m-2"
+        />
+        <span>5.</span>
+        <el-input
+            v-model="form.input5"
+            class="w-50 m-2"
 
-      />
-      <span>6.</span>
-      <el-input
-          v-model="input3"
-          class="w-50 m-2"
+        />
+        <span>6.</span>
+        <el-input
+            v-model="form.input6"
+            class="w-50 m-2"
 
-      />
-    </div>
-    <div class="demo-input-size">
-      <span>7.</span>
-      <el-input
-          v-model="input1"
-          class="w-50 m-2"
+        />
+      </div>
+      <div class="demo-input-size">
+        <span>7.</span>
+        <el-input
+            v-model="form.input7"
+            class="w-50 m-2"
 
-      />
-      <span>8.</span>
-      <el-input
-          v-model="input2"
-          class="w-50 m-2"
+        />
+        <span>8.</span>
+        <el-input
+            v-model="form.input8"
+            class="w-50 m-2"
 
-      />
-      <span>9.</span>
-      <el-input
-          v-model="input3"
-          class="w-50 m-2"
+        />
+        <span>9.</span>
+        <el-input
+            v-model="form.input9"
+            class="w-50 m-2"
 
-      />
-    </div>
-    <div class="demo-input-size-last">
-      <span>10.</span>
-      <el-input
-          v-model="input1"
-          class="w-50 m-2"
+        />
+      </div>
+      <div class="demo-input-size-last">
+        <span>10.</span>
+        <el-input
+            v-model="form.input10"
+            class="w-50 m-2"
 
-      />
-      <span>11.</span>
-      <el-input
-          v-model="input2"
-          class="w-50 m-2"
+        />
+        <span>11.</span>
+        <el-input
+            v-model="form.input11"
+            class="w-50 m-2"
 
-      />
-      <span>12.</span>
-      <el-input
-          v-model="input3"
-          class="w-50 m-2"
+        />
+        <span>12.</span>
+        <el-input
+            v-model="form.input12"
+            class="w-50 m-2"
 
-      />
-    </div>
+        />
+      </div>
+    </el-form>
     <el-button class="login-button" type="primary" @click="handleLogin">注册并登陆</el-button>
   </div>
 </template>
@@ -95,6 +97,20 @@ interface LoginInfo {
   username: string;
   password: string;
 }
+const form = reactive({
+  input1:'',
+  input2:'',
+  input3:'',
+  input4:'',
+  input5:'',
+  input6:'',
+  input7:'',
+  input8:'',
+  input9:'',
+  input10:'',
+  input11:'',
+  input12:'',
+})
 const show = ref(true)
 const router = useRouter();
 const param = reactive<LoginInfo>({

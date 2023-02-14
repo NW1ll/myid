@@ -10,19 +10,20 @@
     </div>
     <div class="login-box">
       <p>使用12位助记词登陆现有身份</p>
+      <el-form :model="form">
         <div class="demo-input-size">
           <span>1.</span>
           <el-input
-              v-model="input1"
+              v-model="form.input1"
               class="w-50 m-2"
               placeholder="Please Input"
               show-password
           />
           <span>2.</span>
-          <el-input v-model="input2" class="w-50 m-2" placeholder="Please Input" show-password />
+          <el-input v-model="form.input2" class="w-50 m-2" placeholder="Please Input" show-password />
           <span>3.</span>
           <el-input
-              v-model="input3"
+              v-model="form.input3"
               class="w-50 m-2"
               placeholder="Please Input"
               show-password
@@ -31,21 +32,21 @@
         <div class="demo-input-size">
           <span>4.</span>
           <el-input
-              v-model="input1"
+              v-model="form.input4"
               class="w-50 m-2"
               placeholder="Please Input"
               show-password
           />
           <span>5.</span>
           <el-input
-              v-model="input2"
+              v-model="form.input5"
               class="w-50 m-2"
               placeholder="Please Input"
               show-password
           />
           <span>6.</span>
           <el-input
-              v-model="input3"
+              v-model="form.input6"
               class="w-50 m-2"
               placeholder="Please Input"
               show-password
@@ -54,49 +55,50 @@
         <div class="demo-input-size">
           <span>7.</span>
           <el-input
-              v-model="input1"
+              v-model="form.input7"
               class="w-50 m-2"
               placeholder="Please Input"
               show-password
           />
           <span>8.</span>
           <el-input
-              v-model="input2"
+              v-model="form.input8"
               class="w-50 m-2"
               placeholder="Please Input"
               show-password
           />
           <span>9.</span>
           <el-input
-              v-model="input3"
+              v-model="form.input9"
               class="w-50 m-2"
               placeholder="Please Input"
               show-password
           />
         </div>
-      <div class="demo-input-size-last">
-        <span>10.</span>
-        <el-input
-            v-model="input1"
-            class="w-50 m-2"
-            placeholder="Please Input"
-            show-password
-        />
-        <span>11.</span>
-        <el-input
-            v-model="input2"
-            class="w-50 m-2"
-            placeholder="Please Input"
-            show-password
-        />
-        <span>12.</span>
-        <el-input
-            v-model="input3"
-            class="w-50 m-2"
-            placeholder="Please Input"
-            show-password
-        />
-      </div>
+        <div class="demo-input-size-last">
+          <span>10.</span>
+          <el-input
+              v-model="form.input10"
+              class="w-50 m-2"
+              placeholder="Please Input"
+              show-password
+          />
+          <span>11.</span>
+          <el-input
+              v-model="form.input11"
+              class="w-50 m-2"
+              placeholder="Please Input"
+              show-password
+          />
+          <span>12.</span>
+          <el-input
+              v-model="form.input12"
+              class="w-50 m-2"
+              placeholder="Please Input"
+              show-password
+          />
+        </div>
+      </el-form>
       <div class="submit">
         <el-checkbox v-model="checked" label="同意" />
         <el-link href="https://element-plus.org" type="primary" target="_blank">使用条款</el-link>
@@ -118,10 +120,23 @@ interface LoginInfo {
   username: string;
   password: string;
 }
+
+const form = reactive({
+  input1:'',
+  input2:'',
+  input3:'',
+  input4:'',
+  input5:'',
+  input6:'',
+  input7:'',
+  input8:'',
+  input9:'',
+  input10:'',
+  input11:'',
+  input12:'',
+})
+
 const checked = ref(false)
-const input1 = ref()
-const input2 = ref('')
-const input3 = ref('')
 const router = useRouter();
 const param = reactive<LoginInfo>({
   username: 'admin',
