@@ -97,18 +97,18 @@ interface LoginInfo {
   password: string;
 }
 const form = reactive({
-  input1:'',
-  input2:'',
-  input3:'',
-  input4:'',
-  input5:'',
-  input6:'',
-  input7:'',
-  input8:'',
-  input9:'',
-  input10:'',
-  input11:'',
-  input12:'',
+  input1:'police',
+  input2:'cow',
+  input3:'goat',
+  input4:'apple',
+  input5:'bike',
+  input6:'ship',
+  input7:'face',
+  input8:'hair',
+  input9:'pen',
+  input10:'hand',
+  input11:'leg',
+  input12:'heart',
 })
 const show = ref(true)
 const router = useRouter();
