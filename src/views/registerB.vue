@@ -163,9 +163,7 @@ tags.clearTags();
 
 <style lang="less" scoped>
 .login-box{
-  position: absolute;
-  top: 250px;
-  left: 36%;
+  margin: 0 auto;
   width: 600px;
   border: 1px #a0a0a6 solid;
   box-sizing: border-box;
@@ -223,10 +221,9 @@ tags.clearTags();
   }
 }
 .p {
-  position: relative;
-  left: -26px;
   text-align: center;
   font-size: 32px;
   font-weight: bold;
+  margin-bottom: 20px;
 }
 </style>

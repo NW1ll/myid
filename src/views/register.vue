@@ -2,11 +2,10 @@
   <div class="wrap">
     <div class="img-box">
       <img src="../assets/img/logo_transparent.png" alt="myId"/>
-      <div class="back" @click="handleBack">
-        <el-icon><ArrowLeft /></el-icon>
-        <span>返回</span>
-      </div>
-
+    </div>
+    <div class="back" @click="handleBack">
+      <el-icon><ArrowLeft /></el-icon>
+      <span>返回</span>
     </div>
     <div v-if="show" class="intro">
       <p>您正在新建一个去中心化身份，同意使用条款后继续</p>
@@ -92,25 +91,24 @@ tags.clearTags();
   background-image: url(../assets/img/login.svg);
   background-size: 100%;
   .img-box {
-    text-align: left;
+    text-align: center;
     img {
+      padding-top: 50px;
       position: relative;
       vertical-align: middle;
-      left: 620px;
-      top: 60px;
       height: 160px;
       width: 160px;
     }
-    .back{
-      position: relative;
-      left: 30px;
-      top: -120px;
-    }
-    .back:hover{
-      color: #4782ad;
-      position: relative;
-      left: 26px;
-    }
+  }
+  .back{
+    position: relative;
+    left: 30px;
+    top: -160px;
+  }
+  .back:hover{
+    color: #4782ad;
+    position: relative;
+    left: 26px;
   }
   .intro{
     margin: 20px auto;

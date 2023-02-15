@@ -7,6 +7,7 @@
     </template>
     <div class="container">
       <vxe-switch  v-model="switchValue" close-label="打开编辑"  open-label="关闭编辑" @change="switchEvent"></vxe-switch>
+      <vxe-button @click="insertEvent()">新增</vxe-button>
       <vxe-grid ref="xTable"  v-bind="gridOptions" >
         <template #prop_default="{ row, column }">
 <!--          后续动态遍历-->
@@ -64,6 +65,14 @@ import {VxeGridInstance,  VxeGridProps, VXETable } from 'vxe-table'
           {  prop: '简介', createDate: 'PM',  content: 32, lastDate: '2021-04-13' },
         ],
       })
+      const insertEvent = async (row: any) => {
+        const $table = xTable.value
+        const record = {
+          prop: '电话',
+        }
+        const { row: newRow } = await $table!.insertAt(record, row)
+        await $table!.setEditCell(newRow, 'prop')
+      }
       const switchValue = ref(false);
       const deleteRowEvent = async (row: any) => {
         const $table = xTable.value
@@ -90,6 +99,7 @@ import {VxeGridInstance,  VxeGridProps, VXETable } from 'vxe-table'
       }
 
       return {
+        insertEvent,
         gridOptions,
         switchValue,
         deleteRowEvent,

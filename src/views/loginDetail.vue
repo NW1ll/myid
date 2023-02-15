@@ -2,11 +2,10 @@
   <div class="wrap">
     <div class="img-box">
       <img src="../assets/img/logo_transparent.png" alt="myId"/>
-      <div class="back" @click="handleBack">
-        <el-icon><ArrowLeft /></el-icon>
-        <span>返回</span>
-      </div>
-
+    </div>
+    <div class="back" @click="handleBack">
+      <el-icon><ArrowLeft /></el-icon>
+      <span>返回</span>
     </div>
     <div class="login-box">
       <p>使用12位助记词登陆现有身份</p>
@@ -17,16 +16,14 @@
               v-model="form.input1"
               class="w-50 m-2"
               placeholder="Please Input"
-              show-password
           />
           <span>2.</span>
-          <el-input v-model="form.input2" class="w-50 m-2" placeholder="Please Input" show-password />
+          <el-input v-model="form.input2" class="w-50 m-2" placeholder="Please Input" />
           <span>3.</span>
           <el-input
               v-model="form.input3"
               class="w-50 m-2"
               placeholder="Please Input"
-              show-password
           />
         </div>
         <div class="demo-input-size">
@@ -35,21 +32,18 @@
               v-model="form.input4"
               class="w-50 m-2"
               placeholder="Please Input"
-              show-password
           />
           <span>5.</span>
           <el-input
               v-model="form.input5"
               class="w-50 m-2"
               placeholder="Please Input"
-              show-password
           />
           <span>6.</span>
           <el-input
               v-model="form.input6"
               class="w-50 m-2"
               placeholder="Please Input"
-              show-password
           />
         </div>
         <div class="demo-input-size">
@@ -58,21 +52,18 @@
               v-model="form.input7"
               class="w-50 m-2"
               placeholder="Please Input"
-              show-password
           />
           <span>8.</span>
           <el-input
               v-model="form.input8"
               class="w-50 m-2"
               placeholder="Please Input"
-              show-password
           />
           <span>9.</span>
           <el-input
               v-model="form.input9"
               class="w-50 m-2"
               placeholder="Please Input"
-              show-password
           />
         </div>
         <div class="demo-input-size-last">
@@ -81,21 +72,18 @@
               v-model="form.input10"
               class="w-50 m-2"
               placeholder="Please Input"
-              show-password
           />
           <span>11.</span>
           <el-input
               v-model="form.input11"
               class="w-50 m-2"
               placeholder="Please Input"
-              show-password
           />
           <span>12.</span>
           <el-input
               v-model="form.input12"
               class="w-50 m-2"
               placeholder="Please Input"
-              show-password
           />
         </div>
       </el-form>
@@ -122,18 +110,18 @@ interface LoginInfo {
 }
 
 const form = reactive({
-  input1:'',
-  input2:'',
-  input3:'',
-  input4:'',
-  input5:'',
-  input6:'',
-  input7:'',
-  input8:'',
-  input9:'',
-  input10:'',
-  input11:'',
-  input12:'',
+  input1:'police',
+  input2:'cow',
+  input3:'goat',
+  input4:'apple',
+  input5:'bike',
+  input6:'ship',
+  input7:'face',
+  input8:'hair',
+  input9:'pen',
+  input10:'hand',
+  input11:'leg',
+  input12:'heart',
 })
 
 const checked = ref(false)
@@ -190,30 +178,27 @@ tags.clearTags();
   background-image: url(../assets/img/login.svg);
   background-size: 100%;
   .img-box {
-    text-align: left;
+    text-align: center;
     img {
-      position: relative;
+      padding-top: 50px;
+      margin: 0 auto;
       vertical-align: middle;
-      left: 620px;
-      top: 60px;
       height: 160px;
       width: 160px;
     }
-    .back{
-      position: relative;
-      left: 30px;
-      top: -120px;
-    }
-    .back:hover{
-      color: #4782ad;
-      position: relative;
-      left: 26px;
-    }
+  }
+  .back{
+    position: relative;
+    left: 30px;
+    top: -160px;
+  }
+  .back:hover{
+    color: #4782ad;
+    position: relative;
+    left: 26px;
   }
   .login-box{
-    position: absolute;
-    top: 200px;
-    left: 35%;
+    margin: 0 auto;
     width: 600px;
     border: 2px #a0a0a6 solid;
     box-sizing: border-box;

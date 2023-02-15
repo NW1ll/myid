@@ -5,16 +5,6 @@
       <span>MyId:由您自己掌握的Web3分布式身份</span>
     </div>
 		<div class="ms-login">
-<!--      <div class="links">-->
-<!--        <div class="link">-->
-<!--          <p>使用助记词登陆现有身份</p>-->
-<!--          <router-link class="aa"  :to="{name:'loginDetail'}">登陆</router-link>-->
-<!--        </div>-->
-<!--        <div class="link">-->
-<!--          <p>使用全新的助记词创建新身份</p>-->
-<!--          <router-link class="aa"  to="/register">创建</router-link>-->
-<!--        </div>-->
-<!--      </div>-->
       <el-row :gutter="16" justify="center">
         <el-col :span="12">
           <el-card shadow="hover" style="border: 2px #dadae5 solid;;border-radius: 10px;background-color: #f6f5f5">

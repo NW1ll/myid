@@ -92,7 +92,7 @@ const items = [
     },
     {
         icon: 'DocumentCopy',
-        index: '/tabs',
+        index: '/permission',
         title: '编辑个人属性',
         permiss: '3',
     },
@@ -137,12 +137,12 @@ const items = [
         title: '管理您的数据',
         permiss: '10',
     },
-    // {
-    //     icon: 'PieChart',
-    //     index: '/charts',
-    //     title: 'schart图表',
-    //     permiss: '11',
-    // },
+    {
+      icon: 'CoffeeCup',
+      index: '/tabs',
+      title: '通知',
+      permiss: '10',
+    },
     // {
     //     icon: 'Warning',
     //     index: '/permission',
