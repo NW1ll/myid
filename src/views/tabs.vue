@@ -3,7 +3,7 @@
 		<el-tabs v-model="message">
 			<el-tab-pane :label="`已验证属性的消息`" name="first">
 				<vxe-table ref="xTable" :data="state1.unread" :show-header="false" >
-					<vxe-column field="name">
+					<vxe-column>
 						<template #default="{row}">
 							<span class="message-title">{{ row.title }}</span>
 						</template>
@@ -15,8 +15,8 @@
 						</template>
 					</vxe-column>
 				</vxe-table>
-
 			</el-tab-pane>
+
 			<el-tab-pane :label="`未验证属性的消息`" name="second">
 				<template v-if="message === 'second'">
 					<vxe-table ref="xTable2" :data="state2.read" :show-header="false" style="width: 100%">
@@ -32,7 +32,6 @@
 							</template>
 						</vxe-column>
 					</vxe-table>
-
 				</template>
 			</el-tab-pane>
 		</el-tabs>
@@ -47,6 +46,7 @@ export default defineComponent({
   setup () {
     const xTable =ref<VxeGridInstance>()
     const xTable2 =ref<VxeGridInstance>()
+    const message = ref('first');
 
     const deleteRowEvent = async (row: any) => {
       const $table = xTable.value
@@ -76,7 +76,7 @@ export default defineComponent({
     const state2 = reactive({
       read: [
         {
-          title: 'www.baidu.com请求您的属性'
+          title: 'www.google.com请求您的属性'
         }
       ]
     });
@@ -92,7 +92,8 @@ export default defineComponent({
       state2,
       forward,
       xTable,
-      xTable2
+      xTable2,
+      message
     }
   }
 })

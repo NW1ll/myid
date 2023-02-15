@@ -14,7 +14,7 @@
                   <el-main>
                     <el-row justify="center">
                       <el-col :span="15">
-                        <el-row justify="center" style="margin-top: 10px">
+                        <el-row justify="center" >
                           <el-icon style="font-size: 46px"><Calendar /></el-icon>
                           <p style="font-size: 28px;color: #606266;margin-top: 40px">认证基本信息</p>
                         </el-row>
