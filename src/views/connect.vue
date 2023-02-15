@@ -18,7 +18,7 @@
         </template>
         <template #default="{ row }">
           <vxe-button status="primary" class-name="aa" content="管理属性" ></vxe-button>
-          <vxe-button status="primary" content="取消授权" ></vxe-button>
+          <vxe-button status="primary" content="取消授权" @click="deleteRowEvent(row) "></vxe-button>
         </template>
       </vxe-grid>
     </div>
@@ -62,6 +62,13 @@ export default defineComponent({
         {  prop: 'Twitter', did: 'PM' },
       ],
     })
+    const deleteRowEvent = async (row: any) => {
+      const $table = xTable.value
+      const type = await VXETable.modal.confirm('您确定要删除该数据?')
+      if (type === 'confirm') {
+        await $table!.remove(row)
+      }
+    }
     const switchEvent = (event:any) =>{
       if(event.value){
         gridOptions.editConfig = {
@@ -81,7 +88,9 @@ export default defineComponent({
 
     return {
       gridOptions,
-      xTable
+      xTable,
+      deleteRowEvent,
+      switchEvent
     }
   }
 })
