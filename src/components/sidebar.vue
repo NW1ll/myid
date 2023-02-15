@@ -42,7 +42,7 @@
                         <el-icon>
                             <component :is="item.icon"></component>
                         </el-icon>
-                        <template #title>{{ item.title }}</template>
+                        <template #title>{{ item.title }}11111</template>
                     </el-menu-item>
                 </template>
             </template>
