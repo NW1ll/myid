@@ -8,81 +8,85 @@
             <img src="../assets/img/logo_transparent.png" style="width: 300px;height: 300px" alt="myId"/>
           </div>
           <el-row :gutter="16" justify="center">
-            <el-col :span="6">
+            <el-col :span="5">
               <el-card shadow="hover" style="border: 2px #dadae5 solid;;border-radius: 10px;background-color: white">
                 <el-container>
                   <el-main>
                     <el-row justify="center">
                       <el-col :span="15">
-                        <p style="font-size: 28px;color: #606266 ">认证基本信息</p>
+                        <el-row justify="center" style="margin-top: 10px">
+                          <el-icon style="font-size: 46px"><Calendar /></el-icon>
+                          <p style="font-size: 28px;color: #606266;margin-top: 40px">认证基本信息</p>
+                        </el-row>
                       </el-col>
                     </el-row>
                   </el-main>
                   <el-footer>
-                    <el-row justify="center">
-                      <el-col :span="15">
-                        <el-button type="primary" round style="width: 160px;margin-top: 20px" @click="handleLogin">登陆</el-button>
-                      </el-col>
+                    <el-row justify="center" style="position: relative;top: -20px">
+                      <el-button type="primary" id="1" round style="width: 160px;margin-top: 20px" @click="handleLogin1">认证</el-button>
                     </el-row>
                   </el-footer>
                 </el-container>
               </el-card>
             </el-col>
-            <el-col :span="6">
+            <el-col :span="5">
               <el-card shadow="hover" style="border: 2px #dadae5 solid;;border-radius: 10px;background-color: white">
                 <el-container>
                   <el-main>
                     <el-row justify="center">
                       <el-col :span="15">
-                        <p style="font-size: 28px;color: #606266 ">编辑个人信息</p>
+                        <el-row justify="center">
+                          <el-icon style="font-size: 46px"><Edit /></el-icon>
+                        <p style="font-size: 28px;color: #606266;margin-top: 40px">编辑个人信息</p>
+                        </el-row>
                       </el-col>
                     </el-row>
                   </el-main>
                   <el-footer>
-                    <el-row justify="center">
-                      <el-col :span="15">
-                        <el-button type="primary" round style="width: 160px;margin-top: 20px" @click="handleLogin">登陆</el-button>
-                      </el-col>
+                    <el-row justify="center" style="position: relative;top: -20px">
+                      <el-button id="2" type="primary" round  style="width: 160px;margin-top: 20px" @click="handleLogin2">编辑</el-button>
                     </el-row>
                   </el-footer>
                 </el-container>
               </el-card>
             </el-col>
-            <el-col :span="6">
+            <el-col :span="5">
               <el-card shadow="hover" style="border: 2px #dadae5 solid;;border-radius: 10px;background-color: white">
                 <el-container>
                   <el-main>
                     <el-row justify="center">
-                      <el-col :span="18">
-                        <p style="font-size: 28px;color: #606266 ">管理已连接的网站</p>
+                      <el-col :span="20">
+                        <el-row justify="center">
+                          <el-icon style="font-size: 46px;"><Setting /></el-icon>
+                          <p style="font-size: 28px;color: #606266 ;margin-top: 40px">管理已连接的网站</p>
+                        </el-row>
                       </el-col>
                     </el-row>
                   </el-main>
                   <el-footer>
-                    <el-row justify="center">
-                      <el-col :span="15">
-                        <el-button type="primary" round style="width: 160px;margin-top: 20px" @click="handleLogin">登陆</el-button>
-                      </el-col>
+                    <el-row justify="center" style="position: relative;top: -20px">
+                      <el-button type="primary" id="3"  round style="width: 160px;margin-top: 20px" @click="handleLogin3">设置</el-button>
                     </el-row>
                   </el-footer>
                 </el-container>
               </el-card>
             </el-col>
-            <el-col :span="6">
+            <el-col :span="5">
               <el-card shadow="hover" style="border: 2px #dadae5 solid;;border-radius: 10px;background-color: white">
                 <el-container>
                   <el-main>
                     <el-row justify="center">
-                      <el-col :span="18">
-                        <p style="font-size: 28px;color: #606266">管理您的数据</p>
+                      <el-col :span="20">
+                        <el-row justify="center">
+                          <el-icon style="font-size: 46px"><MessageBox /></el-icon>
+                          <p style="font-size: 28px;color: #606266;margin-top: 40px">管理数据存储方式</p>
+                        </el-row>
                       </el-col>
                     </el-row>
                   </el-main>
                   <el-footer>
-                    <el-row justify="center">
-                      <el-col :span="15">
-                        <el-button type="primary" round style="width: 160px;margin-top: 20px" @click="handleLogin">登陆</el-button>
-                      </el-col>
+                    <el-row justify="center" style="position: relative;top: -20px">
+                      <el-button type="primary" id="4"  round style="width: 160px;margin-top: 20px" @click="handleLogin4">设置</el-button>
                     </el-row>
                   </el-footer>
                 </el-container>
@@ -97,12 +101,26 @@
 </template>
 
 <script setup lang="ts" name="dashboard">
-import Schart from 'vue-schart';
-import { reactive } from 'vue';
-import imgurl from '../assets/img/img.jpg';
-
+import { useRouter } from 'vue-router';
+const router = useRouter();
 const name = localStorage.getItem('ms_username');
 const role: string = name === 'admin' ? '超级管理员' : '普通用户';
+
+const handleLogin1 = () =>{
+  router.push('/authentication')
+}
+
+const handleLogin2 = () =>{
+  router.push('/editinfo')
+}
+
+const handleLogin3 = () =>{
+  router.push('/connect')
+}
+
+const handleLogin4 = () =>{
+  router.push('/save')
+}
 
 
 </script>

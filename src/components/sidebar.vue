@@ -42,7 +42,7 @@
                         <el-icon>
                             <component :is="item.icon"></component>
                         </el-icon>
-                        <template #title>{{ item.title }}11111</template>
+                        <template #title>{{ item.title }}</template>
                     </el-menu-item>
                 </template>
             </template>
@@ -63,82 +63,31 @@ const items = [
         permiss: '1',
     },
     {
-        icon: 'Calendar',
-        index: '1',
-        title: '认证基本信息',
-        permiss: '2',
-        subs:  [
-            {
-                index: '/authentication',
-                title: '认证个人信息',
-                permiss: '2',
-            },
-            {
-                index: '/editinfo',
-                title: '编辑个人信息',
-                permiss: '2',
-            },
-            {
-                index: '/connect',
-                title: '管理已连接的网站',
-                permiss: '2',
-            },
-            {
-              index: '/save',
-              title: '管理数据保存方式',
-              permiss: '2',
-          },
-        ],
+      icon: 'Calendar',
+      index: '/authentication',
+      title: '认证个人信息',
+      permiss: '2',
     },
     {
-        icon: 'DocumentCopy',
-        index: '/permission',
-        title: '编辑个人属性',
-        permiss: '3',
+      icon: 'Edit',
+      index: '/editinfo',
+      title: '编辑个人信息',
+      permiss: '2',
     },
     {
-        icon: 'Setting',
-        index: '3',
-        title: '管理已连接的网站',
-        permiss: '4',
-        subs: [
-            {
-                index: '/form',
-                title: '基本表单',
-                permiss: '5',
-            },
-            {
-                index: '/upload',
-                title: '文件上传',
-                permiss: '6',
-            },
-            {
-                index: '4',
-                title: '三级菜单',
-                permiss: '7',
-                subs: [
-                    {
-                        index: '/editor',
-                        title: '富文本编辑器',
-                        permiss: '8',
-                    },
-                    {
-                        index: '/markdown',
-                        title: 'markdown编辑器',
-                        permiss: '9',
-                    },
-                ],
-            },
-        ],
+      icon: 'Setting',
+      index: '/connect',
+      title: '管理已连接的网站',
+      permiss: '2',
     },
     {
-        icon: 'Warning',
-        index: '/icon',
-        title: '管理您的数据',
-        permiss: '10',
-    },
+      icon: 'MessageBox',
+      index: '/save',
+      title: '管理数据存储方式',
+      permiss: '2',
+  },
     {
-      icon: 'CoffeeCup',
+      icon: 'Bell',
       index: '/tabs',
       title: '通知',
       permiss: '10',
